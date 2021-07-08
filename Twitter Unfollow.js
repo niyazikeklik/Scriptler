@@ -11,10 +11,10 @@ function cik() {
             list.push(id);
             count_kontrol_edilen++;
             if (element[i].innerText.indexOf("Seni takip") == -1) {
-                if (count_takipten_cikilan < 100) { count_takipten_cikilan++; continue; }
+                //if (count_takipten_cikilan < 100) { count_takipten_cikilan++; continue; }
                 element[i].querySelector('[aria-label="Takip ediliyor ' + id + '"]').click();
                 document.querySelectorAll('[data-testid=confirmationSheetConfirm]')[0].click();
-                console.log("Takipten çıkıldı: " + id + " - " + element[i].innerText.split('\n')[0] + count_takipten_cikilan + "/" + count_kontrol_edilen);
+                console.log("Takipten çıkıldı: " + id + " - " + element[i].innerText.split('\n')[0] + ' ' + count_takipten_cikilan + "/" + count_kontrol_edilen);
                 count_takipten_cikilan++;
             }
 
