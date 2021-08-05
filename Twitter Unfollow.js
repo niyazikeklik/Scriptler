@@ -28,4 +28,4 @@ var idintrvl = setInterval(() => {
     window.scrollBy(0, 1000);
     if (window.scrollY == onceki) clearInterval(idintrvl);
     onceki = window.scrollY;
-}, 1000);
+}, 1500);

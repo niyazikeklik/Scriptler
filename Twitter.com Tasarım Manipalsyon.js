@@ -1,5 +1,17 @@
+// ==UserScript==
+// @name         tw
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://twitter.com/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
 
-var isimler = `('Su', 'K')
+(function() {
+    'use strict';
+    function getisimler(){ var isimler2 =`('Su', 'K')
     ('Aba', 'K')
     ('Abaca', 'K')
     ('Abacan', 'K')
@@ -14112,7 +14124,7 @@ var isimler = `('Su', 'K')
     ('Zürha', 'K');
     ('Züriye', 'K');
     ('Zürtüllah', 'E');
-    ('Zürüye', 'K'); 
+    ('Zürüye', 'K');
     ('sümeyye', 'K')
     ('Cero', 'K')
     ('kevserkocer', 'K')
@@ -14473,62 +14485,72 @@ var isimler = `('Su', 'K')
     ('EK', 'K')
     ('OğulcanⓋ', 'E')
     ('Delally', 'K')
-    `;
-isimler = isimler.toLowerCase();
+    `; return isimler2;}
 
-function cevir() {
-    var list = document.querySelectorAll('[data-testid=UserCell]');
-    list.forEach(element => {
-        element.getElementsByTagName('a')[0].style.width = "150px";
-        element.getElementsByTagName('a')[0].style.height = "150px";
-        element.getElementsByTagName('a')[0].
-        element.children[0].children[1].style = "margin-left: 100px";
+    var isimler = getisimler();
+    isimler = isimler.toLowerCase();
+
+    function cevir(pixel) {
+        var pixelyuzde = pixel * 0.72;
+        var list = document.querySelectorAll('[data-testid=UserCell]');
+        list.forEach(element => {
+            element.getElementsByTagName('a')[0].style.width = pixel+"px";
+            element.getElementsByTagName('a')[0].style.height = pixel+"px";
+            element.children[0].children[1].style = " margin-left:"+pixelyuzde + "px";
+        });
+    }
+
+
+    function boya() {
+        var users = document.querySelectorAll('[data-testid=UserCell]');
+        users.forEach(element => {
+            if (element.innerHTML.indexOf("default_profile") > -1) { element.remove(); } else {
+                var kullaniciad = element.innerText.split('\n')[0].split(' ')[0].toLowerCase();
+                if (isimler.indexOf(kullaniciad + "', 'e'") > -1) {
+                    // element.style.backgroundColor = "red";
+                    // element.style.color = "white";
+                    element.remove();
+                } else if (isimler.indexOf(kullaniciad + "', 'k'") > -1) {
+                    // element.style.backgroundColor = "blue";
+                    // element.style.color = "white";
+
+                } else if (isimler.indexOf(kullaniciad + "', 'u'") > -1) {
+                    // element.style.backgroundColor = "green";
+                    // element.style.color = "white";
+                } else {
+                    element.remove();
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+    document.addEventListener('scroll', function () {
+        boya();
+        cevir(150);
     });
-}
 
+    setInterval(() => {
+        if(document.URL.indexOf("like") !=-1){
+            try{
+                document.querySelector('[aria-labelledby="modal-header"]').children[0].children[1].children[0].addEventListener("scroll", function () {
+                    boya();
+                    cevir(250);
+                });
+                document.querySelector('[aria-labelledby="modal-header"]').style = "width:100%; max-width:100%; max-height:100%; height: 100%;";
+                document.querySelector('[aria-labelledby="modal-header"] > div').children[1].style = "width:100%; max-width:100%; max-height:100%; height: 100%;";
 
-function boya() {
-    var users = document.querySelectorAll('[data-testid=UserCell]');
-    users.forEach(element => {
-        if (element.innerHTML.indexOf("default_profile") > -1) { element.remove(); } else {
-            var kullaniciad = element.innerText.split('\n')[0].split(' ')[0].toLowerCase();
-            if (isimler.indexOf(kullaniciad + "', 'e'") > -1) {
-                // element.style.backgroundColor = "red";
-                // element.style.color = "white";
-                element.remove();
-            } else if (isimler.indexOf(kullaniciad + "', 'k'") > -1) {
-                // element.style.backgroundColor = "blue";
-                // element.style.color = "white";
-
-            } else if (isimler.indexOf(kullaniciad + "', 'u'") > -1) {
-                // element.style.backgroundColor = "green";
-                // element.style.color = "white";
-            } else {
-                element.remove();
+            }
+            catch(e){
+                ;
             }
         }
-    });
-}
+
+    }, 3000);
 
 
-
-
-
-
-document.addEventListener('scroll', function () {
-    boya();
-    cevir();
-});
-setTimeout(() => {
-    document.querySelector('[aria-labelledby="modal-header"]').children[0].children[1].children[0].addEventListener("scroll", function () {
-        boya();
-        cevir();
-    });
-}, 2000);
-
-
-function getir(){
-  console.log(document.querySelector("#react-root > div > div > div.css-1dbjc4n.r-18u37iz.r-13qz1uu.r-417010 > main > div > div > div > div > div > div:nth-child(2) > section > div > div > div:nth-child(2) > div > div > div > div.css-1dbjc4n.r-1iusvr4.r-16y2uox > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wtj0ep > div.css-1dbjc4n.r-1wbh5a2.r-dnmrzs > a > div > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-dnmrzs > div.css-901oao.css-bfa6kz.r-18jsvk2.r-1qd0xha.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0").classList.value);
-}
-
-setInterval(getir(), 1000);
+})();
