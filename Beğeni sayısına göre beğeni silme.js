@@ -1,4 +1,4 @@
-function unlike() {
+function unlike(minBegeni) {
     var elementim = document.querySelectorAll("[data-testid=tweet]");
     for (element of elementim) {
         if (
@@ -10,7 +10,7 @@ function unlike() {
             var begenisayisi = String(
                 element.children[1].children[1].children[2].children[2].innerText
             );
-            if (begenisayisi.indexOf("B") == -1 && parseInt(begenisayisi) < 999) {
+            if (begenisayisi.indexOf("B") == -1 && parseInt(begenisayisi) < minBegeni) {
                 element.querySelector("[data-testid=unlike]").click();
                 console.log(begenisayisi + " begeni sayılı tweet silindi.");
             }
@@ -18,7 +18,9 @@ function unlike() {
     }
 }
 
-setInterval(() => {
-    window.scrollBy(1000, 1000);
-    unlike();
-}, 250);
+function enabledUnlike(minBegeni) {
+    setInterval(() => {
+        window.scrollBy(1000, 1000);
+        unlike(minBegeni);
+    }, 250);
+}
