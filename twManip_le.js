@@ -21,28 +21,22 @@ function enableManip() {
     function boya() {
         var users = document.querySelectorAll('[data-testid=UserCell]');
         users.forEach(element => {
-            if (element.innerHTML.indexOf("default_profile") > -1) { element.remove(); } else {
+            if (element.innerHTML.indexOf("default_profile") > -1)  element.remove(); 
+            else {
                 var kullaniciad = element.innerText.split('\n')[0].split(' ')[0].toLowerCase();
-                if (isimler.indexOf(kullaniciad + "', 'e'") > -1) {
-                    // element.style.backgroundColor = "red";
-                    // element.style.color = "white";
+                if (isimler.indexOf(kullaniciad + "', 'e'") > -1)
                     element.remove();
-                } else if (isimler.indexOf(kullaniciad + "', 'k'") > -1) {
-                    //   element.style.backgroundColor = "blue";
-                    // element.style.color = "white";
-
-                } else if (isimler.indexOf(kullaniciad + "', 'u'") > -1) {
-                    // element.style.backgroundColor = "green";
-                    // element.style.color = "white";
-                    // element.remove();
-                } else {
-                    //element.remove();
-                }
+                // else if (isimler.indexOf(kullaniciad + "', 'k'") > -1)
+                //     element.remove();
+                // else if (isimler.indexOf(kullaniciad + "', 'u'") > -1)
+                //     element.remove();
+                // else
+                //     element.remove();
             }
         });
     }
 
-    document.addEventListener('scroll', function() {
+    document.addEventListener('scroll', function () {
         boya();
         cevir(400);
     });

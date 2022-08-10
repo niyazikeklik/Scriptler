@@ -1,0 +1,33 @@
+function downloadURI(uri, name) 
+{
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    link.click();
+}
+/* end download() */
+function indir(){
+    var x = document.getElementsByClassName("hp_top_cover")[0].style.backgroundImage;
+    var basla = x.indexOf('"');
+    var bitir = x.lastIndexOf('"');
+    var url = x.substring(basla + 1, bitir);
+    url = "https://www.bing.com/" + url;
+    downloadURI(url, "Wallpaper.jpg");
+}
+setTimeout(()=>{
+  
+    
+    var parent = document.getElementById('idCont');
+    var span =  document.createElement('span');
+    span.classList.add("sw_mktsw");
+    
+    var link = document.createElement('button');
+    link.classList.add('sw_lang');
+    link.innerText = "İndir";
+    link.style.color = "black";
+    link.onclick = indir;
+    span.appendChild(link);
+    parent.appendChild(span);
+}, 2500);
+
+
