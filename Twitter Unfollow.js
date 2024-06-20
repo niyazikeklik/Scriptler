@@ -1,3 +1,4 @@
+var r;
 function enabledUnfollow(){
 var kontrolEdildi = [];
 var count_kontrol_edilen = 0;
@@ -13,17 +14,19 @@ function cik() {
             count_kontrol_edilen++;
             if (!element.innerText.includes("Seni")) {
                 element.querySelector(`[aria-label="Takip ediliyor ${id}"]`).click();
-                document.querySelectorAll('[data-testid=confirmationSheetConfirm]')[0].click();
-                console.log(`Takipten çıkıldı: ${id} - ${element.innerText.split('\n')[0]}|${count_takipten_cikilan}/${count_kontrol_edilen}`);
-                count_takipten_cikilan++;
+                setTimeout(()=> {  
+                    document.querySelector('[data-testid=confirmationSheetConfirm]').click();
+                    console.log(`Takipten çıkıldı: ${id} - ${element.innerText.split('\n')[0]}|${count_takipten_cikilan}/${count_kontrol_edilen}`);
+                    count_takipten_cikilan++;
+                });
             }
 
         }
     });
 }
 //var onceki = 0;
-var idintrvl = setInterval(() => {
-    cik();
-    window.scrollBy(0, 1000);
-}, 1500);
+    r = setInterval(() => {
+        cik();
+        window.scrollBy(0, 500);
+    }, 500);
 }
