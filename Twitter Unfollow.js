@@ -30,3 +30,5 @@ function cik() {
         window.scrollBy(0, 500);
     }, 500);
 }
+
+enabledUnfollow();
