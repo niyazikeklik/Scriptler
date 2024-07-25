@@ -12,7 +12,7 @@ function cik() {
         if (!kontrolEdildi.includes(id)) {
             kontrolEdildi.push(id);
             count_kontrol_edilen++;
-            if (!element.innerText.includes("Seni")) {
+            if (!element.innerText.includes("Seni") or 1==1) {
                 element.querySelector(`[aria-label="Takip ediliyor ${id}"]`).click();
                 setTimeout(()=> {  
                     document.querySelector('[data-testid=confirmationSheetConfirm]').click();
