@@ -12,7 +12,7 @@ function cik() {
         if (!kontrolEdildi.includes(id)) {
             kontrolEdildi.push(id);
             count_kontrol_edilen++;
-            if (!element.innerText.includes("Follows you")) {
+            if (!element.innerText.includes("Follows you") or 1==1) {
                 element.querySelector(`[aria-label="Following ${id}"]`).click();
                 setTimeout(()=> {  
                     document.querySelector('[data-testid=confirmationSheetConfirm]').click();
