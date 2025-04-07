@@ -52,7 +52,7 @@ async function takip_cikar() {
 
     const buttonsWithText = filteredLinks.map(link => {
         const button = link.querySelector('button');
-        if (button && button.innerText.trim().toLowerCase() === 'takip ediliyor') {
+        if (button && button.innerText.trim().toLowerCase() === 'takibi bırak') {
             return button;
         }
     }).filter(button => button !== undefined);
@@ -93,7 +93,7 @@ async function takip_cikar_herkes() {
 
     const buttonsWithText = filteredLinks.map(link => {
         const button = link.querySelector('button');
-        if (button && button.innerText.trim().toLowerCase() === 'takip ediliyor') {
+        if (button && button.innerText.trim().toLowerCase() === 'takibi bırak') {
             return button;
         }
     }).filter(button => button !== undefined);
